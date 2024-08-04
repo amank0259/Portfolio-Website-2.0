@@ -15,7 +15,7 @@ const SiteBarLeft = () => {
                 {sideBarLeftSocials.map((social, index) => (
                     <Link
                         to={social.link}
-                        className="block mb-2 hover:scale-110"
+                        className="block mb-2 hover:scale-125"
                         key={index}
                         target="_blank"
                         rel="noopener noreferrer"
