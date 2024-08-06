@@ -3,12 +3,13 @@ import { NavLink } from "react-router-dom";
 import { navLinks } from "../assets/lib/data";
 import ScrollToAnchor from "../ui/Listener";
 import { useTheme } from "../contexts/ThemeContext";
+import { useActiveSectionContext } from '../contexts/activeSessionContext';
 
 const NavBar = () => {
     const { theme } = useTheme();
 
     const [isSticky, setIsSticky] = useState(false);
-
+    const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
     const [isMobileMenuActive, setIsMobileMenuActive] = useState(false);
 
     useEffect(() => {
@@ -51,7 +52,7 @@ const NavBar = () => {
         linkEn,
     }) => {
         const [isHovered, setIsHovered] = useState(false);
-        const isLinkActive = isHovered;
+        const isLinkActive = isHovered || linkEn === activeSection;
 
         const linkClasses = isLinkActive
             ? "transition-all duration-200 relative"
@@ -75,7 +76,7 @@ const NavBar = () => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 className={`relative ${linkClasses}`}
-            // aria-aria-current={link}
+                aria-aria-current={link}
             >
                 <span>
                     {leftArrow}
@@ -99,7 +100,7 @@ const NavBar = () => {
                 >
                     {navLinks.map((link, index) => (
                         <CustomNavLink key={index} link={link.hash} linkEn={link.en}>
-                            {link.en ? (
+                            {link.en === activeSection ? (
                                 <div>
                                     <span className="text-[--orange] absolute -left-5 top-0">
                                         &lt;
@@ -108,7 +109,8 @@ const NavBar = () => {
                                 </div>
                             ) : (
                                 <div onClick={() => {
-
+                                    setActiveSection(link.en);
+                                    setTimeOfLastClick(Date.now());
                                 }}>
                                     {link.en}
                                 </div>
@@ -124,7 +126,7 @@ const NavBar = () => {
                 >
                     {navLinks.map((link, mobileIndex) => (
                         <CustomNavLink key={mobileIndex} link={link.hash} linkEn={link.en}>
-                            {link.en ? (
+                            {link.en === activeSection ? (
                                 <div className="text-[3.2rem] flex flex-col items-center">
                                     <link.icon />
                                 </div>
@@ -132,6 +134,8 @@ const NavBar = () => {
                                 <div
                                     className="text-[2rem] flex flex-col items-center "
                                     onClick={() => {
+                                        setActiveSection(link.en);
+                                        setTimeOfLastClick(Date.now());
                                         if (link.en === "Home") {
                                             document.body.scrollIntoView({
                                                 behavior: "smooth",

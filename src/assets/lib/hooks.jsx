@@ -1,22 +1,24 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "../../contexts/activeSessionContext";
 
 export function useSectionInView(sectionName, threshold = 0.75) {
     const isMobile = window.innerWidth <= 1024;
     const { ref, inView } = useInView({
         threshold: isMobile ? 0.1 : threshold,
     });
+    const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
 
     useEffect(() => {
-        if (inView && Date.now() > 1000) {
+        if (inView && Date.now() - timeOfLastClick > 1000) {
+            setActiveSection(sectionName);
         }
-    }, [inView, sectionName]);
+    }, [inView, sectionName, setActiveSection, timeOfLastClick]);
 
     return {
         ref,
     };
 }
-
 
 export function useMousePosition() {
     const [mousePosition, setMousePosition] = useState({ x: null, y: null });
