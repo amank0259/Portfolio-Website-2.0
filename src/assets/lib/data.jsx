@@ -225,8 +225,8 @@ export const sideBarLeftSocials = [
 
 export const quotesData = [
     {
-        en: `"It's not at all important to get it right the first time. It's vitally important to get it right the last time."`,
-        author: "Andrew Hunt",
+        en: `"The secret to getting ahead is getting started. The secret to getting started is breaking your complex, overwhelming tasks into small manageable tasks, and then starting on the first one."`,
+        author: "- Mark Twain",
     },
     {
         en: `"The web is like a canvas, and code is the paint. Create your masterpiece."`,
