@@ -1,5 +1,4 @@
 import React from "react";
-
 import bannerBg from "../assets/img/bannerbg.webp";
 import { quotesData } from "../assets/lib/data";
 import { useQuoteAnimation } from "../assets/lib/useQuoteAnimation";
@@ -37,7 +36,7 @@ const BannerQuote = ({
                 <div className="h-[50vh] -rotate-3 flex justify-center items-center scale-110">
                     <div className="statement-container rotate-3 flex items-center flex-col justify-center p-56 max-lg:p-20">
                         <h2 className="text-[--black] text-center text-9xl mb-20 mt-20 max-lg:text-[3rem] max-lg:mb-10 max-lg:leading-tight">
-                            {quoteTranslation}
+                            {quotesData[1].en}
                         </h2>
                     </div>
                 </div>
