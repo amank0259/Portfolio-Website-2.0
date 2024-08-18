@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useActiveSectionContext } from "../../contexts/activeSessionContext";
+import { useActiveSectionContext } from "../contexts/activeSessionContext";
 
 export function useSectionInView(sectionName, threshold = 0.75) {
     const isMobile = window.innerWidth <= 1024;
