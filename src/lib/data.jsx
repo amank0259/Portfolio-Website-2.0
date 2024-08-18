@@ -11,10 +11,11 @@ import mongodbicon from "../../assets/icons/mongoicon.svg";
 import sassscssicon from "../../assets/icons/sassicon.svg";
 import apiicon from "../../assets/icons/apiicon.svg";
 import axiosicon from "../../assets/icons/axiosicon.svg";
-import tastyMockup from "../../assets/img/tasty_mockup.webp"
-import instorMockup from "../../assets/img/instor_mockup.webp";
-import silentmoonMockup from "../../assets/img/silentmoon_mockup.webp";
+import graphql from '../icons/graphql.svg'
+import weather from "../../assets/img/projects/weather.png"
+import edutech from "../../assets/img/projects/edutech.png";
 import profile from "../../assets/img/profile.png";
+import graduation from '../icons/graduation.svg'
 import hardwareicon from "../../assets/icons/hardware-icon.svg";
 import nextjsiconwhite from "../../assets/icons/nextjsiconwhite.svg";
 import { GoHome, GoPerson, GoMail, GoStack, GoProject } from "react-icons/go";
@@ -46,21 +47,21 @@ export const headerIntroData = {
 
 export const projectsData = [
     {
-        title: "Tasty App",
+        title: "Weather Forecast Application",
         description:
-            "A recipe app that we built as a team with React and the MealDB API. I was the front-end developer and programmed features like voice search or print to PDF. The design was created with Figma. The website is responsive and mobile-optimized.",
+            "This project offers real-time updates to keep users informed with up-to-the-minute weather data for their specific location. It enhances the user experience by providing immersive visuals, with beautiful background images that reflect the current weather conditions. The design is elegantly crafted to be responsive, ensuring a seamless experience across all devices.",
         technologies: [
             { name: "Html", icon: htmlicon },
             { name: "CSS", icon: cssicon },
             { name: "JavaScript", icon: javascripticon },
             { name: "REST Api", icon: apiicon },
             { name: "React", icon: reacticon },
-            { name: "Figma", icon: figmaicon },
-            { name: "Canva", icon: canvaicon },
+            { name: "Tailwind CSS", icon: tailwindicon },
+            { name: "Axios", icon: axiosicon },
         ],
-        image: tastyMockup,
-        deploymenturl: "",
-        githuburl: "",
+        image: weather,
+        deploymenturl: "https://weather-forecast-app-amank0259.vercel.app/",
+        githuburl: "https://github.com/amank0259/Weather-Forecast-App",
         githubicon: FiGithub,
         deploymenticon: FiLink,
         colors: {
@@ -71,23 +72,21 @@ export const projectsData = [
         },
     },
     {
-        title: "Silentmoon",
+        title: "EduTech - Online Learning PLatform",
         description:
-            "A yoga and meditation app that we built as a team with React, MongoDB, Express and Node.js. My task as a gitmaster and backend developer was to program the backend with connection using a restful API and to model the database in MongoDB.",
+            "An online learning platform developed using Next.js, GraphQL, HiGraph, Node.Js, creating an intuitive interface that allows users to easily discover and explore available courses. Implementing the features such as Dashboard where user can track their Course progress. Involved programming the backend with connection using API and modeling the database using the CMS HiGraph and GraphQL to fetch data from an API.",
         technologies: [
             { name: "Html", icon: htmlicon },
             { name: "CSS", icon: cssicon },
             { name: "JavaScript", icon: javascripticon },
-            { name: "React", icon: reacticon },
+            { name: "Next.js", icon: nextjsiconwhite },
             { name: "Axios", icon: axiosicon },
-            { name: "MongoDB", icon: mongodbicon },
             { name: "Node.js", icon: nodejsicon },
-            { name: "Figma", icon: figmaicon },
+            { name: "GraphQL", icon: graphql },
         ],
-        image: silentmoonMockup,
-        deploymenturl: "",
-        githuburl:
-            "",
+        image: edutech,
+        deploymenturl: "https://edutech0259.vercel.app",
+        githuburl: "https://github.com/amank0259/Edutech",
         githubicon: FiGithub,
         deploymenticon: FiLink,
         colors: {
@@ -97,32 +96,32 @@ export const projectsData = [
             projectcolor: "#FFD5BD",
         },
     },
-    {
-        title: "Furniture Organizer",
-        description:
-            "A furniture organizer app that we programmed as a duo team with React, MongoDB, Express and Node.js. As a gitmaster, I took over the connection of the frontend to the backend and the database modeling. The app is responsive and mobile-optimized.",
-        technologies: [
-            { name: "Html", icon: htmlicon },
-            { name: "CSS", icon: cssicon },
-            { name: "JavaScript", icon: javascripticon },
-            { name: "React", icon: reacticon },
-            { name: "Axios", icon: axiosicon },
-            { name: "MongoDB", icon: mongodbicon },
-            { name: "Node.js", icon: nodejsicon },
-            { name: "Figma", icon: figmaicon },
-        ],
-        image: instorMockup,
-        deploymenturl: "",
-        githuburl: "",
-        githubicon: FiGithub,
-        deploymenticon: FiLink,
-        colors: {
-            main: "main-btn",
-            second: "secondary-btn",
-            icon: "white",
-            projectcolor: "#E3964A",
-        },
-    },
+    // {
+    //     title: "Furniture Organizer",
+    //     description:
+    //         "A furniture organizer app that we programmed as a duo team with React, MongoDB, Express and Node.js. As a gitmaster, I took over the connection of the frontend to the backend and the database modeling. The app is responsive and mobile-optimized.",
+    //     technologies: [
+    //         { name: "Html", icon: htmlicon },
+    //         { name: "CSS", icon: cssicon },
+    //         { name: "JavaScript", icon: javascripticon },
+    //         { name: "React", icon: reacticon },
+    //         { name: "Axios", icon: axiosicon },
+    //         { name: "MongoDB", icon: mongodbicon },
+    //         { name: "Node.js", icon: nodejsicon },
+    //         { name: "Figma", icon: figmaicon },
+    //     ],
+    //     image: instorMockup,
+    //     deploymenturl: "",
+    //     githuburl: "",
+    //     githubicon: FiGithub,
+    //     deploymenticon: FiLink,
+    //     colors: {
+    //         main: "main-btn",
+    //         second: "secondary-btn",
+    //         icon: "white",
+    //         projectcolor: "#E3964A",
+    //     },
+    // },
 ];
 
 export const liveTickerData = {
@@ -226,7 +225,7 @@ export const sideBarLeftSocials = [
 export const quotesData = [
     {
         en: `"The secret to getting ahead is getting started. The secret to getting started is breaking your complex, overwhelming tasks into small manageable tasks, and then starting on the first one."`,
-        author: "- Mark Twain",
+        author: "-  Mark Twain",
     },
     {
         en: `"The web is like a canvas, and code is the paint. Create your masterpiece."`,
@@ -238,20 +237,26 @@ export const aboutMeData = {
     description: "A few code snippets about me",
     paragraphs: [
         {
-            title: "The Circuits of My Heart",
+            title: "About me",
             description:
-                "When I'm not navigating the digital world, I explore the fascinating realm of technology and hardware. Circuits and solder joints are like puzzle pieces to me in an exciting adventure.",
+                "I am a seasoned Web Developer, specializing in Front-End development, and boast proficiency in C++, HTML, CSS, JavaScript, React.js and Next.js Currently a B.Tech final year Computer Science and Engineering student. I am deeply engaged in the dynamic field of web development. My expertise extends to modern web standards and best practices, allowing me to create robust and user-friendly interfaces.",
             icon: hardwareicon,
         },
         {
-            title: "On the Fast Lane of Life",
-            description:
-                "Besides coding, I like to be on the fast lane - in the truest sense of the word. Cars are my passion, and I enjoy being on unknown roads with powerful machines.",
+            title: "Bachelor of Technology",
+            subtitle: "Computer Science and Engineering",
+            description: "Uttarakhand Technical University",
+            icon: graduation,
+            from: 2021,
+            to: 2024
         },
         {
-            title: "The Joy of Discovery as a Life Motto",
-            description:
-                "My journey as a web developer is only a part of my life path. I live by the motto that the adventure only begins when you leave the familiar behind. Discovering new places and cultures is my form of creative inspiration.",
+            title: "Diploma",
+            subtitle: "Mechanical Engineering",
+            description: "Roorkee College of Engineering",
+            icon: graduation,
+            from: 2017,
+            to: 2020
         },
     ],
 };
@@ -394,7 +399,7 @@ export const heightStyles = {
 
 export const spaceStyles = {
     "outer-right-to-inner-left": {
-        marginTop: "-6rem",
+        marginTop: "-16rem",
         width: "100%",
     },
     "outer-left-to-inner-right": {
@@ -427,7 +432,7 @@ export const spaceStyles = {
 
 export const widthStyles = {
     "outer-right-to-inner-left": {
-        widths: ["74.45%", "74.45%"],
+        widths: ["49%", "49%"],
     },
     "outer-left-to-inner-right": {
         widths: ["75%", "75%"],

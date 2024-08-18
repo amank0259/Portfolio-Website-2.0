@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "../ui/Button";
 import RadialGradient from "./RadialGradient";
-import { headerIntroData } from "../assets/lib/data";
-import { useSectionInView } from "../assets/lib/hooks";
+import { headerIntroData } from "../lib/data";
+import { useSectionInView } from "../lib/hooks";
 import { BsMouse } from "react-icons/bs";
 
 const HeaderIntro = () => {

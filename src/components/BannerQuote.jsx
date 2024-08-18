@@ -1,7 +1,7 @@
 import React from "react";
 import bannerBg from "../assets/img/bannerbg.webp";
-import { quotesData } from "../assets/lib/data";
-import { useQuoteAnimation } from "../assets/lib/useQuoteAnimation";
+import { quotesData } from "../lib/data";
+import { useQuoteAnimation } from "../lib/useQuoteAnimation";
 
 const BannerQuote = ({
     style,

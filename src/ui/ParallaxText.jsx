@@ -10,7 +10,7 @@ import {
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
 import { Link } from "react-router-dom";
-import { sideBarLeftSocials, liveTickerData } from "../assets/lib/data";
+import { sideBarLeftSocials, liveTickerData } from "../lib/data";
 
 
 function ParallaxText({ children, baseVelocity = 100 }) {

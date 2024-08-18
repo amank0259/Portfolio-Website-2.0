@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { sideBarRightMail } from "../assets/lib/data";
+import { sideBarRightMail } from "../lib/data";
 
 const SideBarRight = () => {
     return (

@@ -4,7 +4,7 @@ import {
     spaceStyles,
     heightStyles,
     directionStyles,
-} from "../assets/lib/data";
+} from "../lib/data";
 
 const Divider = ({ direction, color, thickness, height, dividerStyle }) => {
     const borderStyle = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { sideBarLeftSocials } from '../assets/lib/data';
+import { sideBarLeftSocials } from '../lib/data';
 
 const SiteBarLeft = () => {
     return (

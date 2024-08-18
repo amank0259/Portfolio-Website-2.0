@@ -2,12 +2,12 @@ import bannerBg from "../assets/img/bannerbg.webp";
 import React, { useRef } from "react";
 import Button from "../ui/Button";
 import LiveTicker from "../ui/ParallaxText";
-import { projectsData, toastMessages } from "../assets/lib/data";
-import { Swiper, SwiperSlide } from "swiper/react"; // Corrected import
+import { projectsData, toastMessages } from "../lib/data";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCards, Pagination } from "swiper/modules";
 import { ToastContainer, toast } from "react-toastify";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import { useSectionInView } from "../assets/lib/hooks";
+import { useSectionInView } from "../lib/hooks";
 import { motion, useScroll, useTransform } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";

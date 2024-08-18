@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { navLinks } from "../assets/lib/data";
+import { navLinks } from "../lib/data";
 import ScrollToAnchor from "../ui/Listener";
 import { useTheme } from "../contexts/ThemeContext";
 import { useActiveSectionContext } from '../contexts/activeSessionContext';

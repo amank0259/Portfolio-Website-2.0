@@ -1,17 +1,15 @@
 import React, { useRef } from "react";
 import me from "../assets/img/me.webp";
-import { aboutMeData } from "../assets/lib/data";
+import { aboutMeData } from "../lib/data";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useSectionInView } from "../assets/lib/hooks";
+import { useSectionInView } from "../lib/hooks";
 
 const AboutMe = () => {
-    const progressCircle = useRef(null);
-    const progressContent = useRef(null);
     const { ref } = useSectionInView("About me");
     const animationReference = useRef(null);
     const { scrollYProgress } = useScroll({

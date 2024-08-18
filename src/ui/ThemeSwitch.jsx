@@ -7,7 +7,7 @@ import {
     BsFillEnvelopeAtFill,
     BsGithub,
 } from 'react-icons/bs';
-import { sideBarLeftSocials } from '../assets/lib/data';
+import { sideBarLeftSocials } from '../lib/data';
 import { Link } from 'react-router-dom';
 
 export default function ThemeSwitch() {
