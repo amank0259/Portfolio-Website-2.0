@@ -29,14 +29,14 @@ const Home = () => {
                         smoothness={true}
                     />
 
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<div></div>}>
                         <LazySiteBarLeft />
                         <LazyHeaderIntro />
                         <LazySiteBarRight />
                     </Suspense>
                 </header>
                 <main className="relative">
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<div></div>}>
                         <LazyBannerQuote style={"withBG"} quoteIndex={0} containerType="quote" />
                         <Divider
                             thickness="0.25rem"
