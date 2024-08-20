@@ -10,9 +10,10 @@ const LazySiteBarLeft = lazy(() => import('../ui/SiteBarLeft'));
 const LazyHeaderIntro = lazy(() => import('../ui/HeaderIntro'));
 const LazySiteBarRight = lazy(() => import('../ui/SideBarRight'));
 const LazyBannerQuote = lazy(() => import('./BannerQuote'));
-const LazyTechStack = lazy(() => import('../components/TechStack'));
+const LazyTechStack = lazy(() => import('./TechStack'));
 const LazyRadialGradient = lazy(() => import('../ui/RadialGradient'));
-const LazyAboutMe = lazy(() => import('../components/AboutMe'))
+const LazyAboutMe = lazy(() => import('./AboutMe'));
+const LazyContact = lazy(() => import('./Contact'))
 
 const Home = () => {
     const theme = useTheme();
@@ -75,6 +76,13 @@ const Home = () => {
                                 height="middle"
                                 dividerStyle="solid" />
                             <LazyAboutMe />
+                            <Divider
+                                thickness="0.25rem"
+                                direction="inner-left-to-middle"
+                                color="lightblue"
+                                height="middle"
+                                dividerStyle="solid" />
+                            <LazyContact />
                         </div>
                     </Suspense>
                 </main>

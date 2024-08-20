@@ -96,32 +96,6 @@ export const projectsData = [
             projectcolor: "#FFD5BD",
         },
     },
-    // {
-    //     title: "Furniture Organizer",
-    //     description:
-    //         "A furniture organizer app that we programmed as a duo team with React, MongoDB, Express and Node.js. As a gitmaster, I took over the connection of the frontend to the backend and the database modeling. The app is responsive and mobile-optimized.",
-    //     technologies: [
-    //         { name: "Html", icon: htmlicon },
-    //         { name: "CSS", icon: cssicon },
-    //         { name: "JavaScript", icon: javascripticon },
-    //         { name: "React", icon: reacticon },
-    //         { name: "Axios", icon: axiosicon },
-    //         { name: "MongoDB", icon: mongodbicon },
-    //         { name: "Node.js", icon: nodejsicon },
-    //         { name: "Figma", icon: figmaicon },
-    //     ],
-    //     image: instorMockup,
-    //     deploymenturl: "",
-    //     githuburl: "",
-    //     githubicon: FiGithub,
-    //     deploymenticon: FiLink,
-    //     colors: {
-    //         main: "main-btn",
-    //         second: "secondary-btn",
-    //         icon: "white",
-    //         projectcolor: "#E3964A",
-    //     },
-    // },
 ];
 
 export const liveTickerData = {
@@ -263,7 +237,7 @@ export const aboutMeData = {
 
 export const contactData = {
     title: "Contact",
-    description: "Write me a message and I will get back to you.",
+    description: "Write me a message.",
     inputfields: [
         {
             name: "name",
@@ -302,8 +276,7 @@ export const contactData = {
         pattern: "{10}",
     },
     button: {
-        value:
-            "Send",
+        value: "Send",
     },
     icon: FiMail,
     iconcolor: "#FFFFFF",
@@ -311,12 +284,6 @@ export const contactData = {
         main: "main-btn",
         second: "secondary-btn",
         icon: "white",
-    },
-    privacyOptIn: {
-        checkbox:
-            "I agree that Admin may use my personal data (name and e-mail address) to contact me.",
-        description:
-            "By submitting this request, you acknowledge that you have read the Private Policy",
     },
 };
 
@@ -326,7 +293,7 @@ export const toastMessages = {
     successEmailSent:
         " Thank you for your email. I will get back to you as soon as possible",
     failedEmailSent:
-        " Unfortunately the sending of your email did not work. Please try again later",
+        " Unfortunately, the sending of your message did not work. Please try again later",
     failedValidationName:
         "Please fill in your name",
 };
