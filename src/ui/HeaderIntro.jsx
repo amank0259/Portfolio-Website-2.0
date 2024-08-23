@@ -30,12 +30,13 @@ const HeaderIntro = () => {
             </p>
 
             <div className="button-container flex items-center justify-center mr-8 gap-10 mb-12 max-lg:flex-col max-lg:items-center">
-                {headerIntroData.buttons.map((button, index) => (
+                {headerIntroData.buttons.map((button, index, resumeLink) => (
                     <Button
                         key={index}
                         label={button.label}
                         iconSVG={button.icon}
-                        link={`#${button.name.toLocaleLowerCase()}`}
+                        link={button.link}
+                        // link={`#${button.name.toLocaleLowerCase()}`}
                         buttoncolor={button.color}
                     />
                 ))}
