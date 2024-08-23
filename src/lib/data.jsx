@@ -12,8 +12,8 @@ import sassscssicon from "../assets/icons/sassicon.svg";
 import apiicon from "../assets/icons/apiicon.svg";
 import axiosicon from "../assets/icons/axiosicon.svg";
 import graphql from '../assets/icons/graphql.svg'
-import weather from "../assets/img/projects/weather.png"
-import edutech from "../assets/img/projects/edutech.png";
+import weather from "../assets/img/projects/weather.jpeg"
+import edutech from "../assets/img/projects/edutech.jpeg";
 import profile from "../assets/img/profile.png";
 import graduation from '../assets/icons/graduation.svg'
 import hardwareicon from "../assets/icons/hardware-icon.svg";
@@ -34,12 +34,14 @@ export const headerIntroData = {
             label: "Contact me",
             icon: FiMail,
             color: "main-btn",
+            link: "#contact",
         },
         {
             name: "My Resume",
             label: "My Resume",
             icon: PiReadCvLogoDuotone,
             color: "secondary-btn",
+            link: "https://drive.google.com/file/d/108-7DF-PwxkXasiAuOHX2FcIZzuwtOiB"
         },
     ],
     profilepicture: profile,
@@ -159,6 +161,12 @@ export const skillsDataWeb = [
                 hash: "#SASS/SCSS",
                 icon: sassscssicon,
                 color: "#CC6699",
+            },
+            {
+                title: "GraphQL",
+                hash: "#GraphQL",
+                icon: graphql,
+                color: "#de33a6",
             },
         ],
     },
