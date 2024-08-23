@@ -10,16 +10,17 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
-    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "";
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [subject, setSubject] = useState("");
-    const [message, setMessage] = useState("");
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+    });
     const [lastUpdatedField, setLastUpdatedField] = useState(null);
+    const [error, setError] = useState(null);
     const { ref } = useSectionInView("Contact");
     const { theme } = useTheme();
-    const [error, setError] = useState(null);
     const animationReference = useRef(null);
     const { scrollYProgress } = useScroll({
         target: animationReference,
@@ -30,14 +31,13 @@ const Contact = () => {
 
     const notifySentForm = async (e) => {
         e.preventDefault();
-        setError(null)
+        setError(null);
 
-        const formData = new FormData(e.currentTarget);
-
-        formData.append("access_key", "c22292d9-faaa-4876-b391-1e8187a7a6a2");
+        const formDataToSend = new FormData(e.currentTarget);
+        formDataToSend.append("access_key", "c22292d9-faaa-4876-b391-1e8187a7a6a2");
 
         try {
-            const response = await axios.post("https://api.web3forms.com/submit", formData, {
+            const response = await axios.post("https://api.web3forms.com/submit", formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -47,20 +47,26 @@ const Contact = () => {
             if (data.success) {
                 toast.success(toastMessages.successEmailSent);
                 e.target.reset();
-                setName("");
-                setEmail("");
-                setSubject("");
-                setMessage("");
+                setFormData({
+                    name: "",
+                    email: "",
+                    subject: "",
+                    message: ""
+                });
             } else {
-                console.log("Error", data);
-                toast.success(toastMessages.successEmailSent);
+                toast.error(toastMessages.failedEmailSent);
             }
-        }
-        catch (error) {
-            console.log("Submission Error", error)
+        } catch (error) {
+            console.log("Submission Error", error);
             toast.error(toastMessages.failedEmailSent);
             setError("An Error occurred, try again later");
         }
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({ ...prevData, [name]: value }));
+        setLastUpdatedField(name);
     };
 
     const handleInputFocus = (fieldName) => {
@@ -88,22 +94,6 @@ const Contact = () => {
         return lines.join("\n");
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-
-        if (name === "name") {
-            setName(value);
-        } else if (name === "email") {
-            setEmail(value);
-        } else if (name === "subject") {
-            setSubject(value);
-        } else if (name === "message") {
-            setMessage(value);
-        }
-
-        setLastUpdatedField(name);
-    };
-
     const [cursorBlink, setCursorBlink] = useState(true);
 
     useEffect(() => {
@@ -122,27 +112,21 @@ import { useState } from "react";
 // 🌈 Spreading Stardust: 
 // Crafting Cosmic Email 🌌
 
-const [sender, setSender] = "${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}🚀";
-const [recipient, setRecipient] = "${email}${lastUpdatedField === "email" ? (cursorBlink ? "|" : " ") : ""}📧";
-const [subject, setSubject] = \n"${subject}${lastUpdatedField === "subject" ? (cursorBlink ? "|" : " ") : ""}✨";
+const [sender, setSender] = "${formData.name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}🚀";
+const [recipient, setRecipient] = "${formData.email}${lastUpdatedField === "email" ? (cursorBlink ? "|" : " ") : ""}📧";
+const [subject, setSubject] = \n"${formData.subject}${lastUpdatedField === "subject" ? (cursorBlink ? "|" : " ") : ""}✨";
 const [message, setMessage] = 
 \`Hello, intrepid traveler! 👋\n
 Across the cosmos, a message for you:\n
-"${wordWrap(message, 40, " ")}${lastUpdatedField === "message" ? (cursorBlink ? "|" : " ") : ""}"\n
+"${wordWrap(formData.message, 40, " ")}${lastUpdatedField === "message" ? (cursorBlink ? "|" : " ") : ""}"\n
 Wishing you stardust dreams,\n
-${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
+${formData.name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
 \``;
 
     return (
         <>
-            <section
-                className="contact-container w-full min-[1921px]:px-[55rem] mt-16"
-                id="contact"
-            >
-                <div
-                    className="title-container flex flex-col gap-6 justify-center items-center py-16  max-lg:p-16"
-                    ref={ref}
-                >
+            <section className="contact-container w-full min-[1921px]:px-[55rem] mt-16" id="contact">
+                <div className="title-container flex flex-col gap-6 justify-center items-center py-16 max-lg:p-16" ref={ref}>
                     <motion.div
                         ref={animationReference}
                         style={{
@@ -163,27 +147,35 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
                     </motion.div>
                 </div>
                 <div className="flex flex-row justify-center items-start px-32 pt-32 mb-32 max-lg:flex-col max-lg:p-10">
-                    <div className="w-1/2  bg-[--darkblue] text-[--white] flex flex-col justify-center items-start gap-24 rounded-2xl p-20 border-solid border-[0.4rem] border-[--lightblue] hover:border-orange duration-500 transition-all  quote-outer-container text-left max-lg:hidden cursor-progress">
+                    <div className="w-1/2 bg-[--darkblue] text-[--white] flex flex-col justify-center items-start gap-24 rounded-2xl p-20 border-solid border-[0.4rem] border-[--lightblue] hover:border-orange duration-500 transition-all quote-outer-container text-left max-lg:hidden cursor-progress">
                         <Highlight
                             code={codeSnippet}
-                            language="tsx"
+                            language="jsx"
                             theme={themes.nightOwl}
                         >
                             {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                                <pre className={`${className} text-4xl `} style={style}>
-                                    {tokens.map((line, i) => (
-                                        <div {...getLineProps({ line, key: i })}>
-                                            {line.map((token, key) => (
-                                                <span {...getTokenProps({ token, key })} />
-                                            ))}
-                                        </div>
-                                    ))}
+                                <pre className={`${className} text-4xl`} style={style}>
+                                    {tokens.map((line, lineIndex) => {
+                                        const lineProps = getLineProps({ line, key: lineIndex });
+                                        const { key, ...restLineProps } = lineProps; // Extract key and other props
+
+                                        return (
+                                            <div key={key} {...restLineProps}>
+                                                {line.map((token, tokenIndex) => {
+                                                    const tokenProps = getTokenProps({ token, key: tokenIndex });
+                                                    const { key, ...restTokenProps } = tokenProps; // Extract key and other props
+
+                                                    return <span {...restTokenProps} key={key} />;
+                                                })}
+                                            </div>
+                                        );
+                                    })}
                                 </pre>
                             )}
                         </Highlight>
                     </div>
                     <form
-                        className="flex flex-col gap-6 justify-center items-center  px-32 w-1/2 max-lg:w-full max-lg:p-10"
+                        className="flex flex-col gap-6 justify-center items-center px-32 w-1/2 max-lg:w-full max-lg:p-10"
                         onSubmit={notifySentForm}
                         autoComplete="off"
                     >
@@ -191,31 +183,24 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
                             <input
                                 key={index}
                                 type={input.type}
-                                placeholder={`${input.placeholder}`}
+                                placeholder={input.placeholder}
                                 name={input.name}
-                                value={
-                                    input.name === "name"
-                                        ? name
-                                        : input.name === "email"
-                                            ? email
-                                            : input.name === "subject"
-                                                ? subject
-                                                : message
-                                }
+                                value={formData[input.name] || ""}
                                 required
                                 onFocus={() => handleInputFocus(input.name)}
                                 onMouseEnter={() => handleInputFocus(input.name)}
                                 onChange={handleInputChange}
                                 className={`${theme === "dark"
-                                    ? "bg-[--blackblue] dark-mode-shadow "
-                                    : "bg-[--icewhite] dark-shadow "
+                                    ? "bg-[--blackblue] dark-mode-shadow"
+                                    : "bg-[--icewhite] dark-shadow"
                                     }`}
                             />
                         ))}
                         <textarea
                             rows={contactData.textarea.rows}
-                            placeholder={`${contactData.textarea.placeholder}`}
+                            placeholder={contactData.textarea.placeholder}
                             name={contactData.textarea.name}
+                            value={formData[contactData.textarea.name] || ""}
                             onFocus={() => handleInputFocus(contactData.textarea.name)}
                             onMouseEnter={() => handleInputFocus(contactData.textarea.name)}
                             onChange={handleInputChange}
@@ -225,7 +210,7 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
                                 }`}
                         />
                         <Button
-                            value={`${contactData.button.value}`}
+                            value={contactData.button.value}
                             iconSVG={contactData.icon}
                             buttoncolor={contactData.colors.main}
                             iconcolor={contactData.colors.icon}
@@ -234,7 +219,7 @@ ${name}${lastUpdatedField === "name" ? (cursorBlink ? "|" : " ") : ""}
                         />
                     </form>
                 </div>
-            </section >
+            </section>
             <ToastContainer
                 position="bottom-right"
                 autoClose={5000}
